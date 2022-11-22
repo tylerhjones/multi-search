@@ -45,7 +45,7 @@ jobs:
   Release:
     needs: Build
     # https://github.community/t/how-do-i-specify-job-dependency-running-in-another-workflow/16482
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main')
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     strategy:
         matrix:
           python-version: ["3.10"]
