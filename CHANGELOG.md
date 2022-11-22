@@ -2,6 +2,9 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.2 (2022-11-22)
+
+
 ## v0.1.1 (2022-11-22)
 ### Fix
 * Update secret ref ([`6f5577e`](https://github.com/tylerhjones/multi-search/commit/6f5577e0f033464b00893395be4b89ca03ee6f0d))
