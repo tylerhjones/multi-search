@@ -45,8 +45,13 @@ jobs:
   Release:
     needs: Build
     # https://github.community/t/how-do-i-specify-job-dependency-running-in-another-workflow/16482
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && !contains(github.event.head_commit.message, 'chore(release):')
-    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main')
+    strategy:
+        matrix:
+          python-version: ["3.10"]
+          poetry-version: ["1.2.2"]
+          os: [macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-python@v2
         with:
@@ -59,3 +64,18 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           semantic-release publish
+  
+  Deploy:
+    needs: Release
+    strategy:
+        matrix:
+          python-version: ["3.10"]
+          poetry-version: ["1.2.2"]
+          os: [macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
