@@ -9,12 +9,12 @@ on:
     branches: [ main ]
 
 jobs:
-  Build:
+  CI:
     strategy:
         matrix:
           python-version: ["3.10"]
           poetry-version: ["1.2.2"]
-          os: [macos-latest]
+          os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
@@ -40,6 +40,13 @@ jobs:
     - name: Build package
       run: |
         python -m poetry build
+    - name: Release package  
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        pip install python-semantic-release
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        semantic-release publish
 
     
   Release:
@@ -64,18 +71,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           semantic-release publish
-  
-  Deploy:
-    needs: Release
-    strategy:
-        matrix:
-          python-version: ["3.10"]
-          poetry-version: ["1.2.2"]
-          os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v2
       - name: Deploy to PyPI
-        uses: pypa/gh-action-pypi-publish@master
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
