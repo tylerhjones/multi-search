@@ -22,7 +22,8 @@ packages = [
 
 
 [tool.poetry.scripts]
-ms = 'multi-search.interface.tui:main'
+# ms='multi-search.interface.tui:main [tui]'
+ms = { callable = "multi-search.interface.tui:main", extras = [] }
 
 [tool.poetry.dependencies]
 toml = "^0.10.2"
