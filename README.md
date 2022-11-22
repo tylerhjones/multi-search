@@ -1,2 +1,3 @@
-# p-search
+# multi-search
+
 Plugin architecture search tool
