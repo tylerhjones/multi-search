@@ -12,6 +12,8 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/tylerhjones/multi-search/",
     packages=find_packages(),
+    use_scm_version=True,
+    setup_requires=['setuptools_scm'],
     install_requires=[],
     classifiers=[
         "Programming Language :: Python :: 3.10",
