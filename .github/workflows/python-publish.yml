@@ -29,7 +29,7 @@ jobs:
     - name: Python Semantic Release
       uses: relekang/python-semantic-release@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.MS_GITHUB_TOKEN }}
         repository_username: __token__
         repository_password: ${{ secrets.PYPI_API_TOKEN }}
 
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: release
     needs: release
-    
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
