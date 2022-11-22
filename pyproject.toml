@@ -24,6 +24,8 @@ packages = [
 [tool.poetry.scripts]
 ms = 'multisearch.interface.tui:main'
 
+[tool.poetry.dependencies]
+toml = "^0.10.2"
 [tool.semantic_release]
 version_variable = [
     "multisearch/__init__.py:__version__",
