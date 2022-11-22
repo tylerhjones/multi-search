@@ -8,7 +8,7 @@ version = "0.1.2"
 description = "organize and call multiple scripts at once via a plugin style pattern"
 authors = ["tyler jones"]
 packages = [
-    { include = "multi-search" },
+    { include = "multisearch" },
 ]
 
 # [tool.poetry.dependencies]
@@ -23,13 +23,13 @@ packages = [
 
 [tool.poetry.scripts]
 # ms='multi-search.interface.tui:main [tui]'
-ms = { callable = "multi-search.interface.tui:main", extras = [] }
+ms = "multisearch.interface.tui:main" 
 
 [tool.poetry.dependencies]
 toml = "^0.10.2"
 [tool.semantic_release]
 version_variable = [
-    "multi-search/__init__.py:__version__",
+    "multisearch/__init__.py:__version__",
     "pyproject.toml:version"
 ]
 branch = "main"
