@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.0 (2022-11-22)
+### Feature
+* Python hates hyphen folders ([`a4d6856`](https://github.com/tylerhjones/multi-search/commit/a4d68568d6512c20b3722a45632b68dd0c4eb95b))
+
 ## v0.1.2 (2022-11-22)
 
 
