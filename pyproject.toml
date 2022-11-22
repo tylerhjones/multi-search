@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "multi-search"
-version = "0.0.1"
+version = "0.0.0"
 description = "organize and call multiple scripts at once via a plugin style pattern"
 authors = ["tyler jones"]
 packages = [
