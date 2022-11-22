@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.1 (2022-11-22)
+### Fix
+* Update secret ref ([`6f5577e`](https://github.com/tylerhjones/multi-search/commit/6f5577e0f033464b00893395be4b89ca03ee6f0d))
+
 ## v0.1.0 (2022-11-22)
 ### Feature
 * Go back to zero version, add depth checkout ([`0d49b0f`](https://github.com/tylerhjones/multi-search/commit/0d49b0f7fe94505c7f0e916914e00335aeab330b))
