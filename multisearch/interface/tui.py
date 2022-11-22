@@ -1,7 +1,8 @@
 
 
 def main():
-    print("hello multi!")
+    print("Hello multi!")
+
 
 if __name__ == "__main__":
     main()
