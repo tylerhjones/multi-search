@@ -32,7 +32,7 @@ version_variable = [
     "pyproject.toml:version"
 ]
 branch = "main"
-upload_to_release = true
+upload_to_release = false
 build_command = "pip install poetry && poetry build"
 version_source = "commit"
 patch_without_tag = true
