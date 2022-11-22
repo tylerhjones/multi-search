@@ -18,6 +18,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
@@ -40,6 +42,7 @@ jobs:
     - name: Build package
       run: |
         python -m poetry build
+
     - name: Release package  
       uses: relekang/python-semantic-release@master
       with:
