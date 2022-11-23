@@ -7,12 +7,15 @@ import toml
 import logging as log
 from pathlib import Path
 
+CONFIG_PATH = "~/.config/multi-search"
+CONFIG_FILENAME = "config.toml"
+
+
 class ConfigException(Exception):
     def __init__(self, message):
         self.message = message
         super().__init__(message)
 
-CONFIG_TYPE_TOML = 'toml'
 
 def toml_loader(config: Config):
     with open(config.config_path, "r") as f:
@@ -22,16 +25,12 @@ def toml_saver(config: Config):
     with open(config.config_path, "w") as f:
         toml.dump(dataclasses.asdict(config), f)
 
-DEFAULT_CONFIG_FILENAME = "config.toml"
-
-DEFAULT_CONFIG_PATH = "~/.config/multi-search"
-
 
 
 @dataclass
 class Config:
-    config_path: str = os.path.expanduser(f"{DEFAULT_CONFIG_PATH}/{DEFAULT_CONFIG_FILENAME}")
-
+    config_path: str = os.path.expanduser(f"{CONFIG_PATH}/{CONFIG_FILENAME}")
+    plugins: dict = dataclasses.field(default_factory=dict)
 
 class ConfigFactory:
     def __init__(self) -> None:
@@ -39,7 +38,7 @@ class ConfigFactory:
 
     def build_path(self)-> None:
       try:
-        config_dir = os.path.expanduser(DEFAULT_CONFIG_PATH)
+        config_dir = os.path.expanduser(CONFIG_PATH)
         log.debug(f"Creating config directory at {config_dir}")
         Path(config_dir).mkdir(parents=True, exist_ok=True)
       except Exception as e:

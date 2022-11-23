@@ -1,16 +1,38 @@
+import argparse
+import asyncio
+import logging
+from multisearch.config import Config, ConfigFactory
+from curses import wrapper
 
-def print_verison():
-  from importlib.metadata import version, PackageNotFoundError
 
-  try:
-      __version__ = version("package-name")
-  except PackageNotFoundError:
-      # package is not installed
-      pass
+class App:
+  def __init__(self, config:Config, stdscr) -> None:
+      self.config = config
+      self.stdscr = stdscr
 
-def main():
-    print("Hello multi!")
+  async def run(self):
+    pass
 
+async def run(app: App):
+  await app.run()
+
+def start_app(stdscr: "_curses._CursesWindow") -> None:
+    parser = argparse.ArgumentParser(description='Omni Search Tool')
+    parser.add_argument('identifier', type=str,
+                        help='The identifier to search for')
+    parser.add_argument('--debug', action='store_true',
+                    help='Enable debug logging')
+
+    args = parser.parse_args()
+    if args.debug:
+        logging.basicConfig(level=logging.DEBUG)
+
+    config: Config = ConfigFactory().build()
+    app = App(config, stdscr)
+    return asyncio.run(run(app))
+
+def main() -> None:
+    wrapper(start_app)
 
 if __name__ == "__main__":
-    main()
+    wrapper(start_app)
