@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.4.0 (2022-11-23)
+### Feature
+* First curses example ([`63aeb5b`](https://github.com/tylerhjones/multi-search/commit/63aeb5b11b05d052623c0277c5a673cd1a7873ab))
+
 ## v0.3.0 (2022-11-23)
 ### Feature
 * Update tui and config modules ([`c23fd25`](https://github.com/tylerhjones/multi-search/commit/c23fd2597d7519e138f1307543ed79b26df89d55))
