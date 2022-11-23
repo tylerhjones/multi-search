@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.0 (2022-11-23)
+### Feature
+* Update tui and config modules ([`c23fd25`](https://github.com/tylerhjones/multi-search/commit/c23fd2597d7519e138f1307543ed79b26df89d55))
+
 ## v0.2.0 (2022-11-22)
 ### Feature
 * Python hates hyphen folders ([`a4d6856`](https://github.com/tylerhjones/multi-search/commit/a4d68568d6512c20b3722a45632b68dd0c4eb95b))
